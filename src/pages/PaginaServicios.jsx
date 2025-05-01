@@ -4,6 +4,7 @@ import { BarChart2, ShoppingBag, Users, Zap } from "lucide-react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import StatCard from "../components/common/StatCard";
+import TablaServicios from "../components/servicios/TablaServicios";
 
 const PaginaAnalisis = () => {
   return (
@@ -42,6 +43,7 @@ const PaginaAnalisis = () => {
             color="#10B981"
           />
         </motion.div>
+        <TablaServicios />
 
         {/* Graficos*/}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

@@ -3,9 +3,9 @@ import { Bell, User, LogOut } from "lucide-react";
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 
-import PanelNotificacion from '../actions/PanelNotificacion';
-import PanelUsuario from '../actions/PanelUsuario';
-import Title from "../actions/Titulo";
+import PanelNotificacion from './panels/PanelNotificacion';
+import PanelUsuario from './panels/PanelUsuario';
+import Title from "./Titulo";
 
 const Header = ({ title }) => {
 	const [activePanel, setActivePanel] = useState(null);
