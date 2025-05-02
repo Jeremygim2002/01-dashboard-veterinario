@@ -66,7 +66,7 @@ const Sidebar = () => {
       className={`relative z-10 transition-all duration-500 ease-in-out flex-shrink-0 ${SidebarAbierto ? "w-64" : "w-20"}`}
       animate={{ width: SidebarAbierto ? 256 : 80 }}
     >
-      <div className="h-full bg-gray-800 bg-opacity-50 backdrop-blur-md p-4 flex flex-col border-r border-gray-700">
+      <div className="h-full p-4 flex flex-col border-r bg-panel border-b border-borde text-texto">
         <motion.button
           whileHover={{ scale: 1.2, rotate: 15 }}
           whileTap={{ scale: 0.8 }}

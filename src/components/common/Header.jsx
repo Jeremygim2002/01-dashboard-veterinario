@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Bell, User, LogOut } from "lucide-react";
+import { Bell} from "lucide-react";
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -15,7 +15,7 @@ const Header = ({ title }) => {
 	};
   
 	return (
-	  <header className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg border-b border-gray-700 z-50 relative">
+	  <header className="bg-panel border-b border-borde text-texto z-50 relative">
 		<div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
 		  {/* Título */}
 		  <Title text={title} />

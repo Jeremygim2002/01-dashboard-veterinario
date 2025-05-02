@@ -58,7 +58,7 @@ const TablaServicios = () => {
 
   return (
     <motion.div
-      className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700 mb-8"
+      className="bg-superficie bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-superficieBorde mb-8"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
@@ -92,7 +92,7 @@ const TablaServicios = () => {
       />
 
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-700">
+        <table className="min-w-full divide-y divide-superficieBorde">
           <thead>
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
@@ -126,22 +126,22 @@ const TablaServicios = () => {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
               >
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-100 font-medium">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-texto font-medium">
                   {servicio.id}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-100 font-medium">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-texto ">
                   {servicio.nombre}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-texto ">
                   {servicio.categoria}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-texto ">
                   {servicio.tipo}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-texto ">
                   S/. {servicio.precio.toFixed(2)}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-texto ">
                   <button
                     onClick={() => toggleEstado(servicio.id)}
                     className={`w-12 h-6 rounded-full flex items-center px-1 transition-colors duration-300 ${

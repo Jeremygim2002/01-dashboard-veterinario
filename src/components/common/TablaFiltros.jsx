@@ -8,6 +8,7 @@ const TablaFiltros = ({
   filtro_2,
   filtro_3,
   botonTexto,
+  onClickBoton,
 }) => {
   return (
     <>
@@ -77,7 +78,9 @@ const TablaFiltros = ({
             </select>
           </div>
 
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg uppercase">
+          <button 
+           onClick={onClickBoton}
+          className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg uppercase">
             {botonTexto || "Agregar"}
           </button>
         </div>

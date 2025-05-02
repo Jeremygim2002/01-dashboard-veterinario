@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { Edit, Trash2 } from "lucide-react";
 import FiltroTabla from "../common/TablaFiltros";
 import { useTablaDatos } from "../../hooks/useTablas";
+import {useState} from 'react'
+import ModalPersonal from "./ModalPersonal"
 
 // Datos de ejemplo
 const DATA_PERSONAL = [
@@ -44,6 +46,14 @@ const DATA_PERSONAL = [
 ];
 
 const TablaPersonal = () => {
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleAgregar = (nuevoPersonal) => {
+    // Aquí actualizas tu estado o envías a la base de datos
+    console.log("Nuevo personal:", nuevoPersonal);
+  };
+
   const {
     busqueda,
     handleSearch,
@@ -84,7 +94,14 @@ const TablaPersonal = () => {
           ],
         }}
         botonTexto="Agregar personal"
-      />
+        onClickBoton={() => setModalOpen(true)}
+        />
+        <ModalPersonal
+          isOpen={modalOpen}
+          onClose={() => setModalOpen(false)}
+          onSubmit={handleAgregar}
+        />
+      
 
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-700">
