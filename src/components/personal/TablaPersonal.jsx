@@ -5,56 +5,51 @@ import FiltroTabla from "../common/TablaFiltros";
 import { useTablaDatos } from "../../hooks/useTablas";
 
 // Datos de ejemplo
-const DATA_SERVICIOS = [
+const DATA_PERSONAL = [
   {
     id: 1,
-    nombre: "Corte",
-    categoria: "Peluquería y Estética",
-    tipo: "baño",
-    precio: 59.99,
+    nombre: "Carlos Pérez",
+    correo: "carlos.perez@example.com",
+    rol: "Veterinario",
     estado: true,
   },
   {
     id: 2,
-    nombre: "Baño",
-    categoria: "Peluquería y Estética",
-    tipo: "baño",
-    precio: 39.99,
+    nombre: "Ana Gómez",
+    correo: "ana.gomez@example.com",
+    rol: "Recepcionista",
     estado: true,
   },
   {
     id: 3,
-    nombre: "Vacuna I",
-    categoria: "Medicina Preventiva",
-    tipo: "baño",
-    precio: 199.99,
-    estado: true,
+    nombre: "Luis Fernández",
+    correo: "luis.fernandez@example.com",
+    rol: "Administrador",
+    estado: false,
   },
   {
     id: 4,
-    nombre: "Vacuna II",
-    categoria: "Medicina Preventiva",
-    tipo: "baño",
-    precio: 29.99,
+    nombre: "Sofía Ramírez",
+    correo: "sofia.ramirez@example.com",
+    rol: "Asistente Veterinario",
     estado: true,
   },
   {
     id: 5,
-    nombre: "Vacuna III",
-    categoria: "Diagnóstico y Tratamiento",
-    tipo: "baño",
-    precio: 79.99,
-    estado: false,
+    nombre: "Miguel Torres",
+    correo: "miguel.torres@example.com",
+    rol: "Especialista en Peluquería",
+    estado: true,
   },
 ];
 
-const TablaServicios = () => {
+const TablaPersonal = () => {
   const {
     busqueda,
     handleSearch,
     toggleEstado,
     datosFiltrados: serviciosFiltrados,
-  } = useTablaDatos(DATA_SERVICIOS, ["nombre", "categoria"]);
+  } = useTablaDatos(DATA_PERSONAL, ["nombre", "rol"]);
 
   return (
     <motion.div
@@ -67,28 +62,28 @@ const TablaServicios = () => {
         busqueda={busqueda}
         handleSearch={handleSearch}
         filtro_1={{
-          label: "Categoría",
+          label: "Rol",
           options: [
-            { value: "medicina", label: "Medicina Preventiva" },
-            { value: "diagnostico", label: "Diagnóstico y Tratamiento" },
-            { value: "peluqueria", label: "Peluquería y Estética" },
+            { value: "veterinario", label: "Veterinario" },
+            { value: "recepcionista", label: "Recepcionista" },
+            { value: "administrador", label: "Administrador" },
           ],
         }}
         filtro_2={{
-          label: "Disponibilidad",
+          label: "Estado",
           options: [
-            { value: "disponible", label: "Disponible" },
-            { value: "no_disponible", label: "No disponible" },
+            { value: "activo", label: "Activo" },
+            { value: "inactivo", label: "Inactivo" },
           ],
         }}
         filtro_3={{
-          label: "Precio",
+          label: "Correo",
           options: [
-            { value: "mayor", label: "Mayor a 100" },
-            { value: "menor", label: "Menor a 100" },
+            { value: "gmail", label: "Gmail" },
+            { value: "example", label: "Example.com" },
           ],
         }}
-        botonTexto="Agregar servicio"
+        botonTexto="Agregar personal"
       />
 
       <div className="overflow-x-auto">
@@ -102,13 +97,10 @@ const TablaServicios = () => {
                 Nombre
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                Categoría
+                Correo
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                tipo
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                Precio
+                Rol
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Estado
@@ -119,37 +111,34 @@ const TablaServicios = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-700">
-            {serviciosFiltrados.map((servicio) => (
+            {serviciosFiltrados.map((personal) => (
               <motion.tr
-                key={servicio.id}
+                key={personal.id}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
               >
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-100 font-medium">
-                  {servicio.id}
+                  {personal.id}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-100 font-medium">
-                  {servicio.nombre}
+                  {personal.nombre}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                  {servicio.categoria}
+                  {personal.correo}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                  {servicio.tipo}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                  S/. {servicio.precio.toFixed(2)}
+                  {personal.rol}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
                   <button
-                    onClick={() => toggleEstado(servicio.id)}
+                    onClick={() => toggleEstado(personal.id)}
                     className={`w-12 h-6 rounded-full flex items-center px-1 transition-colors duration-300 ${
-                      servicio.estado ? "bg-green-500" : "bg-red-500"
+                      personal.estado ? "bg-green-500" : "bg-red-500"
                     }`}
                   >
                     <motion.div
-                      animate={{ x: servicio.estado ? 24 : 0 }}
+                      animate={{ x: personal.estado ? 24 : 0 }}
                       className="w-4 h-4 bg-white rounded-full shadow-md"
                       transition={{
                         type: "spring",
@@ -176,4 +165,4 @@ const TablaServicios = () => {
   );
 };
 
-export default TablaServicios;
+export default TablaPersonal;

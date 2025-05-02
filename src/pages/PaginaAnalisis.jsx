@@ -1,47 +1,15 @@
 import React from "react";
-import Header from "../components/common/Header";
-import { BarChart2, ShoppingBag, Users, Zap } from "lucide-react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
-import StatCard from "../components/common/StatCard";
+import Header from "../components/common/Header";
+import StatCardsGroup from "../components/common/StatCardsGroup";
 
 const PaginaAnalisis = () => {
   return (
     <div className="flex-1 overflow-auto relative z-10">
       <Header title="Analisis" />
       <main className="max-w-7xl mx-auto py-6 px-4 lg:px-8">
-        {/* estadistica */}
-        <motion.div
-          className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
-          <StatCard
-            name="Total ordenes"
-            icon={Zap}
-            value="345"
-            color="#6366F1"
-          />
-          <StatCard
-            name="Total Mascotas"
-            icon={Users}
-            value="234"
-            color="#8B5CF6"
-          />
-          <StatCard
-            name="Total Servicios"
-            icon={ShoppingBag}
-            value="567"
-            color="#EC4899"
-          />
-          <StatCard
-            name="Total Personal"
-            icon={BarChart2}
-            value="12.5"
-            color="#10B981"
-          />
-        </motion.div>
+      <StatCardsGroup />
 
         {/* Graficos*/}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

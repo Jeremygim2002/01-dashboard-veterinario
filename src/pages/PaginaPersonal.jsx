@@ -1,11 +1,26 @@
-import React from 'react'
+import React from "react";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
+import Header from "../components/common/Header";
+import StatCardsGroup from "../components/common/StatCardsGroup";
+import TablaPersonal from "../components/personal/TablaPersonal";
 
-function PaginaPersonal() {
+const PaginaAnalisis = () => {
   return (
-    <div>
-      personal
-    </div>
-  )
-}
+    <div className="flex-1 overflow-auto relative z-10">
+      <Header title="Personal" />
+      <main className="max-w-7xl mx-auto py-6 px-4 lg:px-8">
+       
+      <StatCardsGroup />
+        <TablaPersonal/>
 
-export default PaginaPersonal
+        {/* Graficos*/}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+ 
+        </div>
+      </main>
+    </div>
+  );
+};
+
+export default PaginaAnalisis;

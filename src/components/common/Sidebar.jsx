@@ -22,39 +22,40 @@ const SIDEBAR_ITEMS = [
   {
     name: "Analisis",
     icon: BarChart2,
-    color: COLOR_ICONS, // Azul claro (Inteligencia, Tecnología)
+    color: COLOR_ICONS, 
     href: "/",
-  },
-  {
-    name: "Calendario",
-    icon: CalendarPlus,
-    color: COLOR_ICONS, // Verde menta (Organización, Frescura)
-    href: "/calendario",
   },
   {
     name: "Servicios",
     icon: ShoppingCart,
-    color: COLOR_ICONS, // Amarillo dorado (Servicios, Dinero, Movimiento)
+    color: COLOR_ICONS, 
     href: "/servicios",
-  },
-  {
-    name: "Ordenes",
-    icon: SquareChartGantt,
-    color: COLOR_ICONS, // Rosado vivo (Creatividad, Procesos)
-    href: "/ordenes",
-  },
-  {
-    name: "Personal",
-    icon: BriefcaseBusiness,
-    color: COLOR_ICONS, // Violeta suave (Profesionalismo, Liderazgo)
-    href: "/personal",
   },
   {
     name: "Usuarios",
     icon: SquareUserRound,
-    color: COLOR_ICONS, // Rojo coral (Personas, Comunidad)
+    color: COLOR_ICONS, 
     href: "/usuarios",
   },
+  {
+    name: "Personal",
+    icon: BriefcaseBusiness,
+    color: COLOR_ICONS, 
+    href: "/personal",
+  },
+  {
+    name: "Ordenes",
+    icon: SquareChartGantt,
+    color: COLOR_ICONS, 
+    href: "/ordenes",
+  },
+  {
+    name: "Calendario",
+    icon: CalendarPlus,
+    color: COLOR_ICONS, 
+    href: "/calendario",
+  },
+
 ];
 
 const Sidebar = () => {
