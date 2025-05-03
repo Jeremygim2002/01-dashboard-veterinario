@@ -18,21 +18,21 @@ const ModalPersonal = ({ isOpen, onClose, onSubmit }) => {
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <input
-            className="col-span-3 bg-gray-700 text-white placeholder-gray-400 rounded-lg pl-4 pr-4 py-2"
+            className="col-span-3 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
             type="text"
             placeholder="Nombre completo"
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
           />
           <input
-            className="col-span-2 bg-gray-700 text-white placeholder-gray-400 rounded-lg pl-4 pr-4 py-2"
+            className="col-span-2 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
             type="email"
             placeholder="Correo"
             value={correo}
             onChange={(e) => setCorreo(e.target.value)}
           />
           <select
-            className="col-span-1 bg-gray-700 text-white placeholder-gray-400 rounded-lg pl-4 pr-4 py-2"
+            className="col-span-1 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
             value={rol}
             onChange={(e) => setRol(e.target.value)}
           >

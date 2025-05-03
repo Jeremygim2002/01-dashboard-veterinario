@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   BarChart2,
   SquareChartGantt,
@@ -8,114 +9,96 @@ import {
   ShoppingCart,
   BriefcaseBusiness,
 } from "lucide-react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
 // eslint-disable-next-line no-unused-vars
 import { AnimatePresence, motion } from "framer-motion";
+import useRutasActivas from "../../hooks/useRutasActivas";
 
-const COLOR_ICONS = "#34D399";
-
-{
-  /* Definir los iconos */
-}
 const SIDEBAR_ITEMS = [
-  {
-    name: "Analisis",
-    icon: BarChart2,
-    color: COLOR_ICONS, 
-    href: "/",
-  },
-  {
-    name: "Servicios",
-    icon: ShoppingCart,
-    color: COLOR_ICONS, 
-    href: "/servicios",
-  },
-  {
-    name: "Usuarios",
-    icon: SquareUserRound,
-    color: COLOR_ICONS, 
-    href: "/usuarios",
-  },
-  {
-    name: "Personal",
-    icon: BriefcaseBusiness,
-    color: COLOR_ICONS, 
-    href: "/personal",
-  },
-  {
-    name: "Ordenes",
-    icon: SquareChartGantt,
-    color: COLOR_ICONS, 
-    href: "/ordenes",
-  },
-  {
-    name: "Calendario",
-    icon: CalendarPlus,
-    color: COLOR_ICONS, 
-    href: "/calendario",
-  },
-
+  { name: "Analisis", icon: BarChart2, href: "/" },
+  { name: "Servicios", icon: ShoppingCart, href: "/servicios" },
+  { name: "Usuarios", icon: SquareUserRound, href: "/usuarios" },
+  { name: "Personal", icon: BriefcaseBusiness, href: "/personal" },
+  { name: "Ordenes", icon: SquareChartGantt, href: "/ordenes" },
+  { name: "Calendario", icon: CalendarPlus, href: "/calendario" },
 ];
 
 const Sidebar = () => {
-  const [SidebarAbierto, setSidebarAbierto] = useState(true);
+  const [sidebarAbierto, setSidebarAbierto] = useState(
+    window.innerWidth >= 768
+  );
+  const esRutaActiva = useRutasActivas();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setSidebarAbierto(window.innerWidth >= 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <motion.div
-      className={`relative z-10 transition-all duration-500 ease-in-out flex-shrink-0 ${SidebarAbierto ? "w-64" : "w-20"}`}
-      animate={{ width: SidebarAbierto ? 256 : 80 }}
+      className={`relative z-10 transition-all duration-500 ease-in-out flex-shrink-0 ${
+        sidebarAbierto ? "w-64" : "w-20"
+      }`}
+      animate={{ width: sidebarAbierto ? 256 : 80 }}
     >
       <div className="h-full p-4 flex flex-col border-r bg-panel border-b border-borde text-texto">
         <motion.button
+          aria-label="Alternar menú lateral"
           whileHover={{ scale: 1.2, rotate: 15 }}
           whileTap={{ scale: 0.8 }}
-          onClick={() => setSidebarAbierto(!SidebarAbierto)}
-          className="p-2 rounded-full hover:bg-gray-700 transition-colors max-w-fit"
+          onClick={() => setSidebarAbierto(!sidebarAbierto)}
+          className="p-2 rounded-full hover:bg-sidebar-hover transition-colors max-w-fit"
         >
           <motion.div
-            animate={{ rotate: SidebarAbierto ? 0 : 180, scale: SidebarAbierto ? 1 : 1.5 }}
+            animate={{
+              rotate: sidebarAbierto ? 0 : 180,
+              scale: sidebarAbierto ? 1 : 1.5,
+            }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
-            <Menu size={24} />
+            <Menu size={28} />
           </motion.div>
         </motion.button>
 
         <nav className="mt-8 flex-grow">
-          {SIDEBAR_ITEMS.map((item) => (
-            <Link key={item.href} to={item.href}>
-              <motion.div
-                className="flex items-center p-4 text-sm font-medium rounded-lg hover:bg-gray-700 transition-all mb-2"
-                whileHover={{ scale: 1.1, rotate: -5, transition: { duration: 0.2 } }}
-              >
+          {/* eslint-disable-next-line no-unused-vars */}
+          {SIDEBAR_ITEMS.map(({ name, icon: Icon, href }) => {
+            const activo = esRutaActiva(href);
+            return (
+              <Link key={href} to={href}>
                 <motion.div
-                  whileHover={{ scale: 1.3 }}
-                  className="flex justify-center items-center"
+                  className={`flex items-center p-4 text-sm font-medium rounded-lg mb-2 transition-all ${
+                    activo ? "bg-sidebar-hover" : "hover:bg-sidebar-hover"
+                  }`}
+                  whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                 >
-                  <item.icon size={20} style={{ color: item.color, minWidth: "20px" }} />
+                  <div className="flex justify-center items-center">
+                    <Icon size={20} className="text-color-iconos" />
+                  </div>
+                  <AnimatePresence>
+                    {sidebarAbierto && (
+                      <motion.span
+                        className="ml-4 whitespace-nowrap text-texto"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        transition={{
+                          duration: 0.4,
+                          type: "spring",
+                          stiffness: 100,
+                          damping: 15,
+                        }}
+                      >
+                        {name}
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
                 </motion.div>
-
-                <AnimatePresence>
-                  {SidebarAbierto && (
-                    <motion.span
-                      className="ml-4 whitespace-nowrap"
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: 20 }}
-                      transition={{
-                        duration: 0.4,
-                        type: "spring",
-                        stiffness: 100,
-                        damping: 15,
-                      }}
-                    >
-                      {item.name}
-                    </motion.span>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
         </nav>
       </div>
     </motion.div>

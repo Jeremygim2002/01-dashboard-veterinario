@@ -58,7 +58,7 @@ const TablaServicios = () => {
 
   return (
     <motion.div
-      className="bg-superficie bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-superficieBorde mb-8"
+      className="bg-superficie backdrop-blur-md shadow-lg rounded-xl p-6 border border-superficie-borde mb-8"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
@@ -92,33 +92,33 @@ const TablaServicios = () => {
       />
 
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-superficieBorde">
+        <table className="min-w-full divide-y divide-tabla-linea-inicial">
           <thead>
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
                 ID
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
                 Nombre
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
                 Categoría
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
                 tipo
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
                 Precio
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
                 Estado
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
                 Acciones
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-700">
+          <tbody className="divide-y divide-panel-flotante-borde">
             {serviciosFiltrados.map((servicio) => (
               <motion.tr
                 key={servicio.id}

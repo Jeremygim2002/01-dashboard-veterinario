@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import StatCard from "./StatCard";
 import { Users, Server, Package, PawPrint } from "lucide-react";
 
+
 const StatCardsGroup = () => {
   return (
     <motion.div
@@ -18,15 +19,9 @@ const StatCardsGroup = () => {
         color="#4F46E5"
       />
       <StatCard
-        name="Total ordenes"
-        icon={Package}
-        value="150"
-        color="#7C3AED"
-      />
-      <StatCard
         name="Total Usuarios"
         icon={Users}
-        value="180"
+        value="150"
         color="#F43F5E"
       />
       <StatCard
@@ -34,6 +29,12 @@ const StatCardsGroup = () => {
         icon={PawPrint}
         value="300"
         color="#059669"
+      />
+      <StatCard
+        name="Total Ordenes"
+        icon={Package}
+        value="180"
+        color="#7C3AED"
       />
     </motion.div>
   );

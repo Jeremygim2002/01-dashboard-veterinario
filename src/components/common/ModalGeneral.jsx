@@ -12,7 +12,7 @@ const ModalGeneral = ({ isOpen, onClose, title, children }) => {
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="fixed top-0 left-0 w-full z-50 flex justify-center"
         >
-          <div className="mt-10 bg-slate-900 text-white border border-gray-700 shadow-xl rounded-xl p-6 w-full max-w-xl relative">
+          <div className="mt-10 bg-superficie opacity-100 text-white border border-gray-700 shadow-xl rounded-xl p-6 w-full max-w-xl relative">
             <button
               onClick={onClose}
               className="absolute top-2 right-2 text-gray-400 hover:text-red-400"

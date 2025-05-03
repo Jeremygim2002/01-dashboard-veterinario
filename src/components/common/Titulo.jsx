@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 const Title = ({ text }) => {
   return (
-    <h1 className="text-2xl font-semibold text-slate-100">
+    <h1 className="text-2xl font-semibold text-texto">
       {text}
     </h1>
   );
