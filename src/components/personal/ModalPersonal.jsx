@@ -2,8 +2,12 @@ import { useState } from "react";
 import ModalGeneral from "../common/ModalGeneral";
 
 const ModalPersonal = ({ isOpen, onClose, onSubmit }) => {
+  const [dni, setDni] = useState("");
   const [nombre, setNombre] = useState("");
+  const [apellidoPaterno, setApellidoPaterno] = useState("");
+  const [apellidoMaterno, setApellidoMaterno] = useState("");
   const [correo, setCorreo] = useState("");
+  const [numero, setNumero] = useState("");
   const [rol, setRol] = useState("veterinario");
   const [estado, setEstado] = useState(true);
 
@@ -16,13 +20,27 @@ const ModalPersonal = ({ isOpen, onClose, onSubmit }) => {
   return (
     <ModalGeneral isOpen={isOpen} onClose={onClose} title="Agregar personal">
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-4 gap-8">
           <input
-            className="col-span-3 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
+            className="col-span-4 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
             type="text"
             placeholder="Nombre completo"
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
+          />
+          <input
+            className="col-span-2 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
+            type="text"
+            placeholder="Apellido Paterno"
+            value={apellidoPaterno}
+            onChange={(e) => setApellidoPaterno(e.target.value)}
+          />
+          <input
+            className="col-span-2 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
+            type="text"
+            placeholder="Apellido Materno"
+            value={apellidoMaterno}
+            onChange={(e) => setApellidoMaterno(e.target.value)}
           />
           <input
             className="col-span-2 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
@@ -31,8 +49,22 @@ const ModalPersonal = ({ isOpen, onClose, onSubmit }) => {
             value={correo}
             onChange={(e) => setCorreo(e.target.value)}
           />
+          <input
+            className="col-span-2 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
+            type="email"
+            placeholder="Numero de telefono"
+            value={numero}
+            onChange={(e) => setNumero(e.target.value)}
+          />
+          <input
+            className="col-span-2 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
+            type="email"
+            placeholder="Dni"
+            value={dni}
+            onChange={(e) => setDni(e.target.value)}
+          />
           <select
-            className="col-span-1 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
+            className="col-span-2 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
             value={rol}
             onChange={(e) => setRol(e.target.value)}
           >
@@ -66,7 +98,7 @@ const ModalPersonal = ({ isOpen, onClose, onSubmit }) => {
         <div className="flex justify-end">
           <button
             type="submit"
-            className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg"
+            className="bg-boton-primario hover:bg-boton-hover text-white font-medium py-2 px-4 rounded-lg"
           >
             Guardar
           </button>
