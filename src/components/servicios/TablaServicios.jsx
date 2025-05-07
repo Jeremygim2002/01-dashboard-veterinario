@@ -2,7 +2,9 @@
 import { motion } from "framer-motion";
 import { Edit, Trash2 } from "lucide-react";
 import FiltroTabla from "../common/TablaFiltros";
-import { useTablaDatos } from "../../hooks/useTablas";
+import { useTablaDatos } from "../../hooks/useTablaDatos";
+import {useState} from 'react'
+import ModalServicios from "./ModalServicios"
 
 // Datos de ejemplo
 const DATA_SERVICIOS = [
@@ -49,6 +51,13 @@ const DATA_SERVICIOS = [
 ];
 
 const TablaServicios = () => {
+
+    const [modalOpen, setModalOpen] = useState(false);
+  
+    const handleAgregar = (nuevoPersonal) => {
+      // Aquí actualizas tu estado o envías a la base de datos
+      console.log("Nuevo personal:", nuevoPersonal);
+    };
   const {
     busqueda,
     handleSearch,
@@ -89,7 +98,14 @@ const TablaServicios = () => {
           ],
         }}
         botonTexto="Agregar servicio"
-      />
+        onClickBoton={() => setModalOpen(true)}
+        />
+        <ModalServicios
+          isOpen={modalOpen}
+          onClose={() => setModalOpen(false)}
+          onSubmit={handleAgregar}
+        />
+      
 
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-tabla-linea-inicial">

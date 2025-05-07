@@ -2,9 +2,10 @@
 import { motion } from "framer-motion";
 import { Edit, Trash2 } from "lucide-react";
 import FiltroTabla from "../common/TablaFiltros";
-import { useTablaDatos } from "../../hooks/useTablas";
+import { useTablaDatos } from "../../hooks/useTablaDatos";
 import {useState} from 'react'
 import ModalPersonal from "./ModalPersonal"
+import { inputStyles } from "../../../public/style";
 
 // Datos de ejemplo
 const DATA_PERSONAL = [

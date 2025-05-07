@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { Edit, Trash2 } from "lucide-react";
 import { useState } from "react";
 import FiltroTabla from "../common/TablaFiltros";
+import { useTablaDatos } from "../../hooks/useTablaDatos";
+import ModalUsuarios from "./ModalUsuarios"
 
 // Datos de ejemplo
 const DATA_USUARIOS = [
