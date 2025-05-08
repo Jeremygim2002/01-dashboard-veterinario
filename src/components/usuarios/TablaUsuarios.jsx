@@ -4,70 +4,80 @@ import { Edit, Trash2 } from "lucide-react";
 import { useState } from "react";
 import FiltroTabla from "../common/TablaFiltros";
 import { useTablaDatos } from "../../hooks/useTablaDatos";
-import ModalUsuarios from "./ModalUsuarios"
+import ModalUsuarios from "./ModalUsuarios";
 
 // Datos de ejemplo
 const DATA_USUARIOS = [
   {
     id: 1,
-    nombre_mascota: "Luna",
-    raza_mascota: "Labrador Retriever",
-    peso_mascota: 25.5,
-    id_dueno: 10,
-    nombre_dueno: "Carlos Pérez",
-    telefono: "987654321",
+    nombre_usuario: "Juan Pérez",
+    correo: "perez@gamil.com",
+    telefono: 345646546,
+    nombre_mascota: "Max",
+    raza_mascota: "Labrador",
+    edad_mascota: 5,
+    sexo: "m",
+    estado : true,
   },
   {
     id: 2,
-    nombre_mascota: "Tom",
-    raza_mascota: "Siamés",
-    peso_mascota: 4.2,
-    id_dueno: 10,
-    nombre_dueno: "Ana Gómez",
-    telefono: "923456789",
+    nombre_usuario: "Juan Pérez",
+    correo: "perez@gamil.com",
+    telefono: 345646546,
+    nombre_mascota: "Max",
+    raza_mascota: "Labrador",
+    edad_mascota: 5,
+    sexo: "m",
+    estado : true,
   },
   {
     id: 3,
-    nombre_mascota: "Rocky",
-    raza_mascota: "Bulldog Francés",
-    peso_mascota: 13.8,
-    id_dueno: 10,
-    nombre_dueno: "Luis Fernández",
-    telefono: "912345678",
+    nombre_usuario: "Juan Pérez",
+    correo: "perez@gamil.com",
+    telefono: 345646546,
+    nombre_mascota: "Max",
+    raza_mascota: "Labrador",
+    edad_mascota: 5,
+    sexo: "m",
+    estado : true,
   },
   {
     id: 4,
-    nombre_mascota: "Bella",
-    raza_mascota: "Golden Retriever",
-    peso_mascota: 30.0,
-    id_dueno: 10,
-    nombre_dueno: "Sofía Ramírez",
-    telefono: "956789123",
+    nombre_usuario: "Juan Pérez",
+    correo: "perez@gamil.com",
+    telefono: 345646546,
+    nombre_mascota: "Max",
+    raza_mascota: "Labrador",
+    edad_mascota: 5,
+    sexo: "m",
+    estado : true,
   },
   {
     id: 5,
-    nombre_mascota: "Nala",
-    raza_mascota: "Maine Coon",
-    peso_mascota: 5.7,
-    id_dueno: 10,
-    nombre_dueno: "Miguel Torres",
-    telefono: "987123456",
+    nombre_usuario: "Juan Pérez",
+    correo: "perez@gamil.com",
+    telefono: 345646546,
+    nombre_mascota: "Max",
+    raza_mascota: "Labrador",
+    edad_mascota: 5,
+    sexo: "m",
+    estado : true,
   },
 ];
 
 const TablaUsuarios = () => {
-  const [busqueda, setBusqueda] = useState("");
-  const usuarios = DATA_USUARIOS;
+  const [modalOpen, setModalOpen] = useState(false);
 
-  const handleSearch = (e) => {
-    setBusqueda(e.target.value.toLowerCase());
+  const handleAgregar = (nuevoServicio) => {
+    // Aquí actualizas tu estado o envías a la base de datos
+    console.log("Nuevo personal:", nuevoServicio);
   };
-
-  const serviciosFiltrados = usuarios.filter(
-    (usuario) =>
-      usuario.nombre_mascota.toLowerCase().includes(busqueda.toLowerCase()) ||
-      usuario.nombre_dueno.toLowerCase().includes(busqueda.toLowerCase())
-  );
+  const {
+    busqueda,
+    handleSearch,
+    toggleEstado,
+    datosFiltrados: serviciosFiltrados,
+  } = useTablaDatos(DATA_USUARIOS, ["nombre_mascota", "raza_mascota"]);
 
   return (
     <motion.div
@@ -80,30 +90,34 @@ const TablaUsuarios = () => {
         busqueda={busqueda}
         handleSearch={handleSearch}
         filtro_1={{
-          label: "Dueño",
+          label: "Categoría",
           options: [
-            { value: "usuario1", label: "Carlos Pérez" },
-            { value: "usuario2", label: "Ana Gómez" },
-            { value: "usuario3", label: "Luis Fernández" },
+            { value: "medicina", label: "Medicina Preventiva" },
+            { value: "diagnostico", label: "Diagnóstico y Tratamiento" },
+            { value: "peluqueria", label: "Peluquería y Estética" },
           ],
         }}
         filtro_2={{
-          label: "Raza",
+          label: "Disponibilidad",
           options: [
-            { value: "labrador", label: "Labrador Retriever" },
-            { value: "siames", label: "Siamés" },
-            { value: "golden", label: "Golden Retriever" },
+            { value: "disponible", label: "Disponible" },
+            { value: "no_disponible", label: "No disponible" },
           ],
         }}
         filtro_3={{
-          label: "Peso",
+          label: "Precio",
           options: [
-            { value: "ligero", label: "Menor a 10kg" },
-            { value: "medio", label: "10kg - 20kg" },
-            { value: "pesado", label: "Más de 20kg" },
+            { value: "mayor", label: "Mayor a 100" },
+            { value: "menor", label: "Menor a 100" },
           ],
         }}
         botonTexto="Agregar usuario"
+        onClickBoton={() => setModalOpen(true)}
+      />
+      <ModalUsuarios
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        onSubmit={handleAgregar}
       />
 
       <div className="overflow-x-auto">
@@ -114,22 +128,28 @@ const TablaUsuarios = () => {
                 ID
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                Nombre Mascota
+                Nombre Usuario
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                Raza
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                Peso
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                DNI dueño
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                Nombre dueño
+                Correo 
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Telefono
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                Nombre Mascota
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                Raza Mascota
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                Edad Mascota
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                Sexo Mascota
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                Estado
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Acciones
@@ -151,19 +171,40 @@ const TablaUsuarios = () => {
                   {usuario.nombre_mascota}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-100 font-medium">
+                  {usuario.correo}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-100 font-medium">
+                  {usuario.telefono}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-100 font-medium">
+                  {usuario.nombre_mascota}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300 font-medium">
                   {usuario.raza_mascota}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-100 font-medium">
-                  {usuario.peso_mascota.toFixed(2)}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-100 font-medium">
-                  {usuario.id_dueno}
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300 font-medium">
+                  {usuario.edad_mascota}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300 font-medium">
-                  {usuario.nombre_dueno}
+                  {usuario.sexo}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300 font-medium">
-                  {usuario.telefono}
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-texto ">
+                  <button
+                    onClick={() => toggleEstado(usuario.id)}
+                    className={`w-12 h-6 rounded-full flex items-center px-1 transition-colors duration-300 ${
+                      usuario.estado ? "bg-green-500" : "bg-red-500"
+                    }`}
+                  >
+                    <motion.div
+                      animate={{ x: usuario.estado ? 24 : 0 }}
+                      className="w-4 h-4 bg-white rounded-full shadow-md"
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 20,
+                      }}
+                    />
+                  </button>
                 </td>
 
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">

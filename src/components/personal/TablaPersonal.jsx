@@ -5,7 +5,7 @@ import FiltroTabla from "../common/TablaFiltros";
 import { useTablaDatos } from "../../hooks/useTablaDatos";
 import {useState} from 'react'
 import ModalPersonal from "./ModalPersonal"
-import { inputStyles } from "../../../public/style";
+
 
 // Datos de ejemplo
 const DATA_PERSONAL = [
@@ -13,6 +13,8 @@ const DATA_PERSONAL = [
     id: 1,
     nombre: "Carlos Pérez",
     correo: "carlos.perez@example.com",
+    telefono: "123456789",
+    dni: "12345678",
     rol: "Veterinario",
     estado: true,
   },
@@ -20,6 +22,8 @@ const DATA_PERSONAL = [
     id: 2,
     nombre: "Ana Gómez",
     correo: "ana.gomez@example.com",
+    telefono: "987654321",
+    dni: "12345678",
     rol: "Recepcionista",
     estado: true,
   },
@@ -27,6 +31,8 @@ const DATA_PERSONAL = [
     id: 3,
     nombre: "Luis Fernández",
     correo: "luis.fernandez@example.com",
+    telefono: "456789123",
+    dni: "12345678",
     rol: "Administrador",
     estado: false,
   },
@@ -34,6 +40,8 @@ const DATA_PERSONAL = [
     id: 4,
     nombre: "Sofía Ramírez",
     correo: "sofia.ramirez@example.com",
+    telefono: "456789123",
+    dni: "12345678",
     rol: "Asistente Veterinario",
     estado: true,
   },
@@ -41,6 +49,8 @@ const DATA_PERSONAL = [
     id: 5,
     nombre: "Miguel Torres",
     correo: "miguel.torres@example.com",
+    telefono: "456789123",
+    dni: "12345678",
     rol: "Especialista en Peluquería",
     estado: true,
   },
@@ -118,6 +128,12 @@ const TablaPersonal = () => {
                 Correo
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
+                Teléfono
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
+                Dni
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
                 Rol
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
@@ -144,6 +160,12 @@ const TablaPersonal = () => {
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm  text-texto">
                   {personal.correo}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm  text-texto">
+                  {personal.telefono}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm  text-texto">
+                  {personal.dni}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm  text-texto">
                   {personal.rol}

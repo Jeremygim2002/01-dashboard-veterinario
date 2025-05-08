@@ -10,41 +10,46 @@ import ModalServicios from "./ModalServicios"
 const DATA_SERVICIOS = [
   {
     id: 1,
-    nombre: "Corte",
     categoria: "Peluquería y Estética",
     tipo: "baño",
+    descripcion: "Baño y corte de pelo",
+    duracion: "30",
     precio: 59.99,
     estado: true,
   },
   {
     id: 2,
-    nombre: "Baño",
     categoria: "Peluquería y Estética",
     tipo: "baño",
+    descripcion: "Baño y corte de pelo",
+    duracion: "30",
     precio: 39.99,
     estado: true,
   },
   {
     id: 3,
-    nombre: "Vacuna I",
     categoria: "Medicina Preventiva",
     tipo: "baño",
+    descripcion: "Baño y corte de pelo",
+    duracion: "30",
     precio: 199.99,
     estado: true,
   },
   {
     id: 4,
-    nombre: "Vacuna II",
     categoria: "Medicina Preventiva",
     tipo: "baño",
+    descripcion: "Baño y corte de pelo",
+    duracion: "30",
     precio: 29.99,
     estado: true,
   },
   {
     id: 5,
-    nombre: "Vacuna III",
     categoria: "Diagnóstico y Tratamiento",
     tipo: "baño",
+    descripcion: "Baño y corte de pelo",
+    duracion: "30",
     precio: 79.99,
     estado: false,
   },
@@ -54,16 +59,16 @@ const TablaServicios = () => {
 
     const [modalOpen, setModalOpen] = useState(false);
   
-    const handleAgregar = (nuevoPersonal) => {
+    const handleAgregar = (nuevoServicio) => {
       // Aquí actualizas tu estado o envías a la base de datos
-      console.log("Nuevo personal:", nuevoPersonal);
+      console.log("Nuevo personal:", nuevoServicio);
     };
   const {
     busqueda,
     handleSearch,
     toggleEstado,
     datosFiltrados: serviciosFiltrados,
-  } = useTablaDatos(DATA_SERVICIOS, ["nombre", "categoria"]);
+  } = useTablaDatos(DATA_SERVICIOS, ["categoria", "tipo"]);
 
   return (
     <motion.div
@@ -115,13 +120,16 @@ const TablaServicios = () => {
                 ID
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
-                Nombre
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
                 Categoría
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
                 tipo
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
+                descripcion
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
+                duración
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
                 Precio
@@ -146,13 +154,16 @@ const TablaServicios = () => {
                   {servicio.id}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-texto ">
-                  {servicio.nombre}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-texto ">
                   {servicio.categoria}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-texto ">
                   {servicio.tipo}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-texto ">
+                  {servicio.descripcion}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-texto ">
+                  {servicio.duracion}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-texto ">
                   S/. {servicio.precio.toFixed(2)}
