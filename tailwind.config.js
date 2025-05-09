@@ -58,5 +58,14 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [function ({ addComponents }) {
+    addComponents({
+      '.form-input': {
+        '@apply bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2': {},
+      },
+      '.form-button': {
+        '@apply bg-boton-primario hover:bg-boton-hover text-white font-medium py-2 px-4 rounded-lg': {},
+      },
+    });
+  },],
 }

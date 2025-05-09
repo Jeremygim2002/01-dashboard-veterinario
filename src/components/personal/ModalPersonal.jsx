@@ -68,6 +68,7 @@ const ModalPersonal = ({ isOpen, onClose, onSubmit }) => {
             value={rol}
             onChange={(e) => setRol(e.target.value)}
           >
+            <option value="administrador">Rol</option>
             <option value="administrador">Administrador</option>
             <option value="veterinario">Veterinario</option>
             <option value="recepcionista">Recepcionista</option>

@@ -1,11 +1,10 @@
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
-import { Edit, Trash2 } from "lucide-react";
 import FiltroTabla from "../common/TablaFiltros";
 import { useTablaDatos } from "../../hooks/useTablaDatos";
-import {useState} from 'react'
-import ModalPersonal from "./ModalPersonal"
-
+import { useState } from "react";
+import ModalPersonal from "./ModalPersonal";
+import TablaBase from "../common/TablaBase";
 
 // Datos de ejemplo
 const DATA_PERSONAL = [
@@ -16,7 +15,7 @@ const DATA_PERSONAL = [
     telefono: "123456789",
     dni: "12345678",
     rol: "Veterinario",
-    estado: true,
+    estado: false,
   },
   {
     id: 2,
@@ -57,7 +56,6 @@ const DATA_PERSONAL = [
 ];
 
 const TablaPersonal = () => {
-
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleAgregar = (nuevoPersonal) => {
@@ -69,8 +67,13 @@ const TablaPersonal = () => {
     busqueda,
     handleSearch,
     toggleEstado,
-    datosFiltrados: serviciosFiltrados,
+    datosFiltrados: personalFiltrado,
   } = useTablaDatos(DATA_PERSONAL, ["nombre", "rol"]);
+
+  const handleSeleccionarPersonal = (personal) => {
+    console.log("Producto seleccionado:", personal);
+    // Aquí podrías abrir un modal, añadirlo a un carrito, etc.
+  };
 
   return (
     <motion.div
@@ -106,101 +109,28 @@ const TablaPersonal = () => {
         }}
         botonTexto="Agregar personal"
         onClickBoton={() => setModalOpen(true)}
-        />
-        <ModalPersonal
-          isOpen={modalOpen}
-          onClose={() => setModalOpen(false)}
-          onSubmit={handleAgregar}
-        />
-      
+      />
+      <ModalPersonal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        onSubmit={handleAgregar}
+      />
 
-      <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-tabla-linea-inicial">
-          <thead>
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
-                ID
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
-                Nombre
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
-                Correo
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
-                Teléfono
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
-                Dni
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
-                Rol
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
-                Estado
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-texto-secundario uppercase tracking-wider">
-                Acciones
-              </th>
-            </tr>
-          </thead>
-          <tbody className="divide-y  divide-panel-flotante-borde">
-            {serviciosFiltrados.map((personal) => (
-              <motion.tr
-                key={personal.id}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
-              >
-                <td className="px-6 py-4 whitespace-nowrap text-sm  text-texto font-medium">
-                  {personal.id}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm  text-texto">
-                  {personal.nombre}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm  text-texto">
-                  {personal.correo}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm  text-texto">
-                  {personal.telefono}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm  text-texto">
-                  {personal.dni}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm  text-texto">
-                  {personal.rol}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm  text-texto">
-                  <button
-                    onClick={() => toggleEstado(personal.id)}
-                    className={`w-12 h-6 rounded-full flex items-center px-1 transition-colors duration-300 ${
-                      personal.estado ? "bg-green-500" : "bg-red-500"
-                    }`}
-                  >
-                    <motion.div
-                      animate={{ x: personal.estado ? 24 : 0 }}
-                      className="w-4 h-4 bg-white rounded-full shadow-md"
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 20,
-                      }}
-                    />
-                  </button>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                  <button className="text-indigo-400 hover:text-indigo-300 mr-2">
-                    <Edit size={18} />
-                  </button>
-                  <button className="text-red-400 hover:text-red-300">
-                    <Trash2 size={18} />
-                  </button>
-                </td>
-              </motion.tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <TablaBase
+        columnas={[
+          { id: "id", label: "ID" },
+          { id: "nombre", label: "Nombre" },
+          { id: "correo", label: "Correo" },
+          { id: "telefono", label: "Teléfono" },
+          { id: "dni", label: "DNI" },
+          { id: "rol", label: "Rol" },
+        ]}
+        datos={personalFiltrado}
+        onVer={handleSeleccionarPersonal}
+        onEditar={(p) => console.log("Editar", p)}
+        onEliminar={(id) => console.log("Eliminar ID:", id)}
+        onToggleEstado={toggleEstado}
+      />
     </motion.div>
   );
 };

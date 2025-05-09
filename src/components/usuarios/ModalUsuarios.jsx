@@ -51,15 +51,36 @@ const ModalUsuarios = ({ isOpen, onClose, onSubmit }) => {
           />
           <input
             className="col-span-2 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
-            type="email"
+            type="number"
             placeholder="Numero de telefono"
             value={numero}
             onChange={(e) => setNumero(e.target.value)}
           />
           <input
             className="col-span-2 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
-            type="email"
+            type="text"
             placeholder="Dni"
+            value={dni}
+            onChange={(e) => setDni(e.target.value)}
+          />
+          <input
+            className="col-span-2 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
+            type="text"
+            placeholder="Nombre Mascota"
+            value={dni}
+            onChange={(e) => setDni(e.target.value)}
+          />
+          <input
+            className="col-span-2 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
+            type="text"
+            placeholder="Raza Mascota"
+            value={dni}
+            onChange={(e) => setDni(e.target.value)}
+          />
+          <input
+            className="col-span-2 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
+            type="number"
+            placeholder="Edad Mascota"
             value={dni}
             onChange={(e) => setDni(e.target.value)}
           />
@@ -68,10 +89,9 @@ const ModalUsuarios = ({ isOpen, onClose, onSubmit }) => {
             value={rol}
             onChange={(e) => setRol(e.target.value)}
           >
-            <option value="administrador">Administrador</option>
-            <option value="veterinario">Veterinario</option>
-            <option value="recepcionista">Recepcionista</option>
-            <option value="limpieza">Limpieza</option>
+            <option value="administrador">Sexo</option>
+            <option value="veterinario">M</option>
+            <option value="recepcionista">F</option>
           </select>
         </div>
 

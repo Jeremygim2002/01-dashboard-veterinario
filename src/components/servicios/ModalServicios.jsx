@@ -1,5 +1,9 @@
 import { useState } from "react";
 import ModalGeneral from "../common/ModalGeneral";
+import Input from "../common/forms/Input";
+import Select from "../common/forms/Select";
+import Switch from "../common/forms/Switch";
+import Button from "../common/forms/Button";
 
 const ModalServicios = ({ isOpen, onClose, onSubmit }) => {
   const [categoria, setCategoria] = useState("baños");
@@ -19,42 +23,38 @@ const ModalServicios = ({ isOpen, onClose, onSubmit }) => {
     <ModalGeneral isOpen={isOpen} onClose={onClose} title="Agregar servicio">
       <form onSubmit={handleSubmit} className="space-y-8">
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-8">
-          <select
-            className="col-span-2 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
-            value={categoria}
-            onChange={(e) => setCategoria(e.target.value)}
-          >
+
+        <Select className="col-span-2" value={categoria} onChange={(e) => setCategoria(e.target.value)}>
             <option value="categoria">categoria</option>
             <option value="veterinario">Veterinario</option>
             <option value="recepcionista">Recepcionista</option>
             <option value="limpieza">Limpieza</option>
-          </select>
-          <select
-            className="col-span-2 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
-            value={tipo}
-            onChange={(e) => setTipo(e.target.value)}
-          >
+          </Select>
+
+          <Select className="col-span-2" value={tipo} onChange={(e) => setTipo(e.target.value)}>
             <option value="tipo">tipo</option>
             <option value="veterinario">Veterinario</option>
             <option value="recepcionista">Recepcionista</option>
             <option value="limpieza">Limpieza</option>
-          </select>
-          <input
-            className="col-span-4 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
+          </Select>
+
+          <Input
+            className="col-span-4"
             type="text"
-            placeholder="Descripcion"
+            placeholder="Descripción"
             value={descripcion}
             onChange={(e) => setDescripcion(e.target.value)}
           />
-          <input
-            className="col-span-2 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
+
+           <Input
+            className="col-span-2"
             type="number"
-            placeholder="Duracion"
+            placeholder="Duración"
             value={duracion}
             onChange={(e) => setDuracion(e.target.value)}
           />
-          <input
-            className="col-span-2 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
+          <Input
+            className="col-span-2"
             type="number"
             placeholder="Precio"
             value={precio}
@@ -63,33 +63,9 @@ const ModalServicios = ({ isOpen, onClose, onSubmit }) => {
         </div>
 
         {/* Toggle de estado */}
-        <div className="flex items-center gap-3">
-          <button
-            type="button"
-            onClick={() => setEstado(!estado)}
-            className={`w-10 h-5 rounded-full flex items-center px-1 transition-colors duration-300 ${
-              estado ? "bg-green-500" : "bg-red-500"
-            }`}
-          >
-            <div
-              className={`w-3 h-3 bg-white rounded-full transition-transform duration-300 transform ${
-                estado ? "translate-x-5" : "translate-x-0"
-              }`}
-            />
-          </button>
-          <span className="text-sm text-gray-400">
-            {estado ? "Activo" : "Inactivo"}
-          </span>
-        </div>
 
-        <div className="flex justify-end">
-          <button
-            type="submit"
-            className="bg-boton-primario hover:bg-boton-hover text-white font-medium py-2 px-4 rounded-lg"
-          >
-            Guardar
-          </button>
-        </div>
+        <Switch estado={estado} setEstado={setEstado} />
+        <Button>Guardar</Button>
       </form>
     </ModalGeneral>
   );
