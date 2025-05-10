@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom";
 
 import Sidebar from "./components/common/Sidebar";
 
-
 import PaginaAnalisis from "./pages/PaginaAnalisis";
 import PaginaServicios from "./pages/PaginaServicios";
 import PaginaOrdenes from "./pages/PaginaOrdenes";

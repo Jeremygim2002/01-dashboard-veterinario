@@ -1,5 +1,9 @@
 import { useState } from "react";
 import ModalGeneral from "../common/ModalGeneral";
+import Input from "../common/forms/Input";
+import Select from "../common/forms/Select";
+import Switch from "../common/forms/Switch";
+import Button from "../common/forms/Button"
 
 const ModalPersonal = ({ isOpen, onClose, onSubmit }) => {
   const [dni, setDni] = useState("");
@@ -21,50 +25,50 @@ const ModalPersonal = ({ isOpen, onClose, onSubmit }) => {
     <ModalGeneral isOpen={isOpen} onClose={onClose} title="Agregar personal">
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-8">
-          <input
-            className="col-span-4 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
+          <Input
+            className="col-span-4"
             type="text"
             placeholder="Nombre completo"
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
           />
-          <input
-            className="col-span-2 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
+          <Input
+            className="col-span-2"
             type="text"
             placeholder="Apellido Paterno"
             value={apellidoPaterno}
             onChange={(e) => setApellidoPaterno(e.target.value)}
           />
-          <input
-            className="col-span-2 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
+          <Input
+            className="col-span-2"
             type="text"
             placeholder="Apellido Materno"
             value={apellidoMaterno}
             onChange={(e) => setApellidoMaterno(e.target.value)}
           />
-          <input
-            className="col-span-2 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
+          <Input
+            className="col-span-2"
             type="email"
             placeholder="Correo"
             value={correo}
             onChange={(e) => setCorreo(e.target.value)}
           />
-          <input
-            className="col-span-2 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
-            type="email"
+          <Input
+            className="col-span-2"
+            type="text"
             placeholder="Numero de telefono"
             value={numero}
             onChange={(e) => setNumero(e.target.value)}
           />
-          <input
-            className="col-span-2 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
-            type="email"
+          <Input
+            className="col-span-2"
+            type="text"
             placeholder="Dni"
             value={dni}
             onChange={(e) => setDni(e.target.value)}
           />
-          <select
-            className="col-span-2 bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2"
+          <Select
+            className="col-span-2"
             value={rol}
             onChange={(e) => setRol(e.target.value)}
           >
@@ -73,37 +77,12 @@ const ModalPersonal = ({ isOpen, onClose, onSubmit }) => {
             <option value="veterinario">Veterinario</option>
             <option value="recepcionista">Recepcionista</option>
             <option value="limpieza">Limpieza</option>
-          </select>
+          </Select>
         </div>
 
-        {/* Toggle de estado */}
-        <div className="flex items-center gap-3">
-          <button
-            type="button"
-            onClick={() => setEstado(!estado)}
-            className={`w-10 h-5 rounded-full flex items-center px-1 transition-colors duration-300 ${
-              estado ? "bg-green-500" : "bg-red-500"
-            }`}
-          >
-            <div
-              className={`w-3 h-3 bg-white rounded-full transition-transform duration-300 transform ${
-                estado ? "translate-x-5" : "translate-x-0"
-              }`}
-            />
-          </button>
-          <span className="text-sm text-gray-400">
-            {estado ? "Activo" : "Inactivo"}
-          </span>
-        </div>
+        <Switch estado={estado} setEstado={setEstado} />
 
-        <div className="flex justify-end">
-          <button
-            type="submit"
-            className="bg-boton-primario hover:bg-boton-hover text-white font-medium py-2 px-4 rounded-lg"
-          >
-            Guardar
-          </button>
-        </div>
+        <Button>Agregar</Button>
       </form>
     </ModalGeneral>
   );

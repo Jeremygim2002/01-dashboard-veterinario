@@ -41,7 +41,7 @@ const TablaBase = ({
             )}
           </tr>
         </thead>
-        <tbody className="divide-y divide-panel-flotante-borde">
+        <tbody className="divide-y divide-modal-borde">
           {datos.map((fila) => (
             <motion.tr
               key={fila.id}

@@ -1,4 +1,6 @@
 import { Search } from "lucide-react";
+import Select from "./forms/Select"
+import Input from "./forms/Input"
 
 const TablaFiltros = ({
   busqueda,
@@ -19,38 +21,38 @@ const TablaFiltros = ({
         <div className="flex flex-wrap gap-4 mt-4 w-full">
           {/* Filtro 1 */}
           <div className="relative flex-1 min-w-[150px]">
-            <select className="w-full bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto rounded-lg pl-3 pr-10 py-2">
+            <Select className="w-full pl-3 pr-10 ">
               <option value="">{filtro_1.label}</option>
               {filtro_1.options.map((opt, index) => (
                 <option key={index} value={opt.value}>
                   {opt.label}
                 </option>
               ))}
-            </select>
+            </Select>
           </div>
 
           {/* Filtro 2 */}
           <div className="relative flex-1 min-w-[150px]">
-            <select className="w-full  bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto rounded-lg pl-3 pr-10 py-2">
+            <Select className="w-full pl-3 pr-10">
               <option value="">{filtro_2.label}</option>
               {filtro_2.options.map((opt, index) => (
                 <option key={index} value={opt.value}>
                   {opt.label}
                 </option>
               ))}
-            </select>
+            </Select>
           </div>
 
           {/* Filtro 3 */}
           <div className="relative flex-1 min-w-[150px]">
-            <select className="w-full bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto rounded-lg pl-3 pr-10 py-2">
+            <Select className="w-full pl-3 pr-10">
               <option value="">{filtro_3.label}</option>
               {filtro_3.options.map((opt, index) => (
                 <option key={index} value={opt.value}>
                   {opt.label}
                 </option>
               ))}
-            </select>
+            </Select>
           </div>
         </div>
       </div>
@@ -58,23 +60,23 @@ const TablaFiltros = ({
       {/* Buscador + Paginación + Agregar */}
       <div className="flex justify-between items-center gap-4 mb-6">
         <div className="relative">
-          <input
+          <Input
+            className="pl-10 pr-4"
             type="text"
             placeholder="Buscar ..."
-            className=" bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-10 pr-4 py-2"
             onChange={handleSearch}
             value={busqueda}
           />
-          <Search className="absolute left-3 top-2.5 text-texto-secundario" size={18} />
+          <Search className="absolute mr-10 top-2.5 text-texto-secundario" size={18} />
         </div>
 
         <div className="flex items-center gap-4">
           <div className="relative w-28">
-            <select className="w-full bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto rounded-lg pl-3 pr-6 py-2">
+            <Select className="w-full">
               <option value="5">5</option>
               <option value="10">10</option>
               <option value="25">25</option>
-            </select>
+            </Select>
           </div>
 
           <button 

@@ -15,7 +15,7 @@ const PanelNotificacion = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="absolute right-2 top-16 w-64 sm:w-72 bg-panel-flotante border border-panel-flotante-borde rounded-xl shadow-xl p-4 flex flex-col space-y-3 z-50"
+      className="absolute right-2 top-16 w-64 sm:w-72 bg-modal border border-modal-borde rounded-xl shadow-xl p-4 flex flex-col space-y-3 z-50"
     >
       {notificaciones.map((item, idx) => (
         <React.Fragment key={idx}>

@@ -16,39 +16,31 @@ export default {
         "sidebar-hover": "#2A3344",         // Hover de los ítems del Sidebar
 
         //  Textos
-        texto: "#E2E8F0",                   // Texto principal (titulares y contenido relevante)
-        "texto-secundario": "#94A3B8",      // Texto menos destacado (descripciones, etiquetas)
+        texto: "#E2E8F0",                   // Texto principal 
+        "texto-secundario": "#94A3B8",      // Texto secundario 
 
         //  Superficie (Divs dentro del fondo)
-        superficie: "#1E293B",               // Fondo de divs y tablas dentro de cada página
+        superficie: "#1E293B",               // Fondo de divs 
         "superficie-borde": "#334155",       // Bordes de los divs/tablas
 
-        //  Botones en Superficie
+        //  Botones
         "boton-primario": "#0EA5E9",          // Botón principal (acciones generales)
         "boton-hover": "#0284C7",             // Hover del botón principal
 
-        //  Inputs 
-        input: "#374151",             // Fondo del input 
+        //  Inputs y select 
+        input: "#374151",               // Fondo del input 
         "input-borde": "#4B5563",       // Borde del input 
         "input-foco": "#64748B",        // Hover/foco del input 
 
-        //  Modales
-        modal: "#212936",                     // Color igual al de los paneles flotantes del header
-        "modal-borde": "#374151",             // Bordes del modal (igual al de los paneles)
+        //  Modales y paneles
+        modal: "#212936",                     // Color igual al de los paneles 
+        "modal-borde": "#374151",             // Bordes del modal 
         sombra: "rgba(0, 0, 0, 0.6)",         // Sombra para profundidad en modales
-
-        //  Botones en Modal
-        "boton-modal": "#283548",             // Botón principal dentro del modal
-        "boton-modal-hover": "#059669",       // Hover del botón dentro del modal
-
-        //  Paneles flotantes (Ejemplo: Notificaciones y Usuario en Header)
-        "panel-flotante": "#212936",           // Igual al color del modal para mantener relación visual
-        "panel-flotante-borde": "#374151",     // Bordes del panel flotante
-        "panel-flotante-linea": "#475569", // Sombra para los paneles flotantes
+        "panel-flotante-linea": "#475569",    // Sombra para los paneles flotantes
 
 
         //  Iconos en Sidebar
-        "color-iconos": "#34D399", // Color vibrante para los íconos del Sidebar
+        "color-iconos": "#34D399",           // Color íconos del Sidebar
         "tabla-linea-inicial": "#E5E7EB",
 
       },
@@ -58,14 +50,5 @@ export default {
       },
     },
   },
-  plugins: [function ({ addComponents }) {
-    addComponents({
-      '.form-input': {
-        '@apply bg-input border border-input-borde focus:outline-none focus:ring-2 focus:ring-input-foco text-texto placeholder-texto-secundario rounded-lg pl-4 pr-4 py-2': {},
-      },
-      '.form-button': {
-        '@apply bg-boton-primario hover:bg-boton-hover text-white font-medium py-2 px-4 rounded-lg': {},
-      },
-    });
-  },],
+  plugins: [],
 }

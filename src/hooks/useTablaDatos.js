@@ -1,4 +1,3 @@
-// src/hooks/useTablaDatos.js
 import { useState, useMemo } from "react";
 
 export const useTablaDatos = (dataInicial, camposBusqueda = []) => {

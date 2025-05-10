@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import PanelNotificacion from "./panels/PanelNotificacion";
 import PanelUsuario from "./panels/PanelUsuario";
 import Title from "./Titulo";
+import Input from "./forms/Input"
 
 const Header = ({ title }) => {
   const [activePanel, setActivePanel] = useState(null);
@@ -43,7 +44,7 @@ const Header = ({ title }) => {
             onClick={() => togglePanel("user")}
             className="relative"
           >
-            <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-panel-flotante-borde shadow-md cursor-pointer">
+            <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-modal-borde shadow-md cursor-pointer">
               <img
                 src="/avatar.jpg"
                 alt="Avatar de usuario"
