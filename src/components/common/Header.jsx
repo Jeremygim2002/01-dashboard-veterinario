@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import PanelNotificacion from "./panels/PanelNotificacion";
 import PanelUsuario from "./panels/PanelUsuario";
 import Title from "./Titulo";
-import Input from "./forms/Input"
+import SearchInput from "./forms/SearchInput"
 
 const Header = ({ title }) => {
   const [activePanel, setActivePanel] = useState(null);
@@ -23,10 +23,10 @@ const Header = ({ title }) => {
 
         <div className="flex items-center space-x-4 sm:space-x-6 relative">
 
-          <input
+          <SearchInput
             type="text"
             placeholder="Buscar..."
-            className="hidden sm:block bg-input text-texto placeholder-texto rounded-full border border-input-borde shadow-md px-4 py-2 transition focus:outline-none focus:ring-2 focus:ring-input-foco"
+            className="hidden sm:block"
           />
 
           {/* Botón Notificaciones */}

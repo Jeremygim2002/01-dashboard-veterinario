@@ -1,6 +1,5 @@
 import React from "react";
-// eslint-disable-next-line no-unused-vars
-import { motion } from "framer-motion";
+import PanelGeneral from "../PanelGeneral";
 
 const notificaciones = [
   { color: "bg-green-400", texto: "Nueva notificación: Nuevo cambio" },
@@ -10,13 +9,7 @@ const notificaciones = [
 
 const PanelNotificacion = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="absolute right-2 top-16 w-64 sm:w-72 bg-modal border border-modal-borde rounded-xl shadow-xl p-4 flex flex-col space-y-3 z-50"
-    >
+    <PanelGeneral className="w-64 sm:w-72 flex flex-col space-y-3">
       {notificaciones.map((item, idx) => (
         <React.Fragment key={idx}>
           <div className="cursor-pointer hover:bg-sidebar-hover rounded-lg p-2 transition flex items-center space-x-2">
@@ -28,7 +21,7 @@ const PanelNotificacion = () => {
           )}
         </React.Fragment>
       ))}
-    </motion.div>
+    </PanelGeneral>
   );
 };
 

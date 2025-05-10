@@ -61,13 +61,13 @@ const TablaFiltros = ({
       <div className="flex justify-between items-center gap-4 mb-6">
         <div className="relative">
           <Input
-            className="pl-10 pr-4"
+            className="pl-11 pr-4"
             type="text"
             placeholder="Buscar ..."
             onChange={handleSearch}
             value={busqueda}
           />
-          <Search className="absolute mr-10 top-2.5 text-texto-secundario" size={18} />
+          <Search className="absolute left-3 mr-10 top-2.5 text-texto-secundario pointer-events-none" size={18} />
         </div>
 
         <div className="flex items-center gap-4">

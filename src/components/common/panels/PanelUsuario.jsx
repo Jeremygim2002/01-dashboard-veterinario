@@ -1,17 +1,9 @@
-import React from "react";
 import { User, LogOut } from "lucide-react";
-// eslint-disable-next-line no-unused-vars
-import { motion } from "framer-motion";
+import PanelGeneral from "../PanelGeneral";
 
 const PanelUsuario = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="absolute right-2 top-16 w-48 bg-modal border border-modal-borde rounded-xl shadow-xl p-4 flex flex-col space-y-3 z-50"
-    >
+    <PanelGeneral className="w-48 flex flex-col space-y-3">
       <button
         aria-label="Ver perfil"
         className="flex items-center space-x-2 text-texto text-sm hover:bg-sidebar-hover rounded-lg p-2 transition"
@@ -26,7 +18,7 @@ const PanelUsuario = () => {
         <LogOut size={18} />
         <span>Cerrar sesión</span>
       </button>
-    </motion.div>
+    </PanelGeneral>
   );
 };
 
