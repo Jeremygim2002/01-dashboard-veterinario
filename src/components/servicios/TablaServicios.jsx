@@ -3,8 +3,9 @@ import { motion } from "framer-motion";
 import FiltroTabla from "../common/TablaFiltros";
 import { useTablaDatos } from "../../hooks/useTablaDatos";
 import { useState } from "react";
-import ModalServicios from "./ModalServicios";
+import ModalAgregarServicio from "./ModalAgregarServicio";
 import TablaBase from "../common/TablaBase";
+import ModalVerServicio from "./ModalVerServicio";
 
 // Datos de ejemplo
 const DATA_SERVICIOS = [
@@ -57,9 +58,10 @@ const DATA_SERVICIOS = [
 
 const TablaServicios = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalVerOpen, setModalVerOpen] = useState(false);
+  const [servicioSeleccionado, setServicioSeleccionado] = useState(null);
 
   const handleAgregar = (nuevoServicio) => {
-    // Aquí actualizas tu estado o envías a la base de datos
     console.log("Nuevo personal:", nuevoServicio);
   };
   const {
@@ -69,9 +71,10 @@ const TablaServicios = () => {
     datosFiltrados: servicioFiltrado,
   } = useTablaDatos(DATA_SERVICIOS, ["categoria", "tipo"]);
 
-  const handleSeleccionarServicio = (servicio) => {
-    console.log("Producto seleccionado:", servicio);
-    // Aquí podrías abrir un modal, añadirlo a un carrito, etc.
+
+  const handleVerServicios = (servicio) => {
+    setServicioSeleccionado(servicio);
+    setModalVerOpen(true);
   };
 
   return (
@@ -109,7 +112,7 @@ const TablaServicios = () => {
         botonTexto="Agregar servicio"
         onClickBoton={() => setModalOpen(true)}
       />
-      <ModalServicios
+      <ModalAgregarServicio
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
         onSubmit={handleAgregar}
@@ -125,10 +128,16 @@ const TablaServicios = () => {
           { id: "precio", label: "Precio" },
         ]}
         datos={servicioFiltrado}
-        onVer={handleSeleccionarServicio}
+        onVer={handleVerServicios}
         onEditar={(p) => console.log("Editar", p)}
         onEliminar={(id) => console.log("Eliminar ID:", id)}
         onToggleEstado={toggleEstado}
+      />
+
+      <ModalVerServicio
+        isOpen={modalVerOpen}
+        onClose={() => setModalVerOpen(false)}
+        servicio={servicioSeleccionado}
       />
     </motion.div>
   );

@@ -1,6 +1,3 @@
-import React from "react";
-// eslint-disable-next-line no-unused-vars
-import { motion } from "framer-motion";
 import Header from "../components/common/Header";
 import StatCardsGroup from "../components/common/StatCardsGroup";
 import TablaPersonal from "../components/personal/TablaPersonal";

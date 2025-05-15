@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 import FiltroTabla from "../common/TablaFiltros";
 import { useTablaDatos } from "../../hooks/useTablaDatos";
 import { useState } from "react";
-import ModalPersonal from "./ModalPersonal";
+import ModalAgregarPersonal from "./ModalAgregarPersonal";
+import ModalVerPersonal from "./ModalVerPersonal";
 import TablaBase from "../common/TablaBase";
 
 // Datos de ejemplo
@@ -57,6 +58,8 @@ const DATA_PERSONAL = [
 
 const TablaPersonal = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalVerOpen, setModalVerOpen] = useState(false);
+  const [personalSeleccionado, setPersonalSeleccionado] = useState(null);
 
   const handleAgregar = (nuevoPersonal) => {
     // Aquí actualizas tu estado o envías a la base de datos
@@ -70,9 +73,9 @@ const TablaPersonal = () => {
     datosFiltrados: personalFiltrado,
   } = useTablaDatos(DATA_PERSONAL, ["nombre", "rol"]);
 
-  const handleSeleccionarPersonal = (personal) => {
-    console.log("Producto seleccionado:", personal);
-    // Aquí podrías abrir un modal, añadirlo a un carrito, etc.
+  const handleVerPersonal = (personal) => {
+    setPersonalSeleccionado(personal);
+    setModalVerOpen(true);
   };
 
   return (
@@ -110,7 +113,7 @@ const TablaPersonal = () => {
         botonTexto="Agregar personal"
         onClickBoton={() => setModalOpen(true)}
       />
-      <ModalPersonal
+      <ModalAgregarPersonal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
         onSubmit={handleAgregar}
@@ -126,10 +129,16 @@ const TablaPersonal = () => {
           { id: "rol", label: "Rol" },
         ]}
         datos={personalFiltrado}
-        onVer={handleSeleccionarPersonal}
+        onVer={handleVerPersonal}
         onEditar={(p) => console.log("Editar", p)}
         onEliminar={(id) => console.log("Eliminar ID:", id)}
         onToggleEstado={toggleEstado}
+      />
+
+      <ModalVerPersonal
+        isOpen={modalVerOpen}
+        onClose={() => setModalVerOpen(false)}
+        personal={personalSeleccionado}
       />
     </motion.div>
   );

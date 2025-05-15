@@ -3,7 +3,7 @@ const SearchInput = ({ className = "", ...props }) => (
     type="text"
     {...props}
     placeholder="Buscar..."
-    className={`bg-input text-texto placeholder-texto-secundario rounded-full border border-input-borde shadow-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-input-foco ${className}`}
+    className={` font-cuerpo bg-input text-texto placeholder-texto-secundario rounded-full border border-input-borde shadow-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-input-foco ${className}`}
   />
 );
 

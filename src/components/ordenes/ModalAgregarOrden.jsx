@@ -5,7 +5,7 @@ import Input from "../common/forms/Input";
 import Select from "../common/forms/Select";
 import Switch from "../common/forms/Switch";
 
-const ModalOrdenes = ({ isOpen, onClose, onSubmit }) => {
+const ModalAgregarOrden = ({ isOpen, onClose, onSubmit }) => {
   const [dniDuenio, setDniDuenio] = useState("");
 
   const [nombreDuenio, setNombreDuenio] = useState("");
@@ -56,14 +56,16 @@ const ModalOrdenes = ({ isOpen, onClose, onSubmit }) => {
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-8">
           <Input
-            className="col-span-2"
+            className="col-span-2 pl-4"
+            name="dniDuenio"
             type="text"
             placeholder="Dni del dueño"
             value={dniDuenio}
             onChange={(e) => setDniDuenio(e.target.value)}
           />
           <Input
-            className="col-span-2"
+            className="col-span-2 pl-4"
+            name="nombreDuenio"
             type="text"
             placeholder="Nombre del dueño"
             value={nombreDuenio}
@@ -71,7 +73,8 @@ const ModalOrdenes = ({ isOpen, onClose, onSubmit }) => {
           />
 
           <Select
-            className="col-span-4"
+            className="col-span-4 "
+            name="nombreMascota"
             value={nombreMascota}
             onChange={(e) => setNombreMascota(e.target.value)}
           >
@@ -83,7 +86,8 @@ const ModalOrdenes = ({ isOpen, onClose, onSubmit }) => {
           </Select>
 
           <Input
-            className="col-span-2"
+            className="col-span-2 pl-4"
+            name="razaMascota"
             type="text"
             placeholder="Raza de la mascota"
             value={razaMascota}
@@ -91,7 +95,8 @@ const ModalOrdenes = ({ isOpen, onClose, onSubmit }) => {
           />
 
           <Input
-            className="col-span-2"
+            className="col-span-2 pl-4"
+            name="edadMascota"
             type="text"
             placeholder="Edad de la mascota"
             value={edadMascota}
@@ -99,7 +104,8 @@ const ModalOrdenes = ({ isOpen, onClose, onSubmit }) => {
           />
 
           <Select
-            className="col-span-2"
+            className="col-span-2 pl-4"
+            name="categoria"
             value={categoria}
             onChange={(e) => setCategoria(e.target.value)}
           >
@@ -112,6 +118,7 @@ const ModalOrdenes = ({ isOpen, onClose, onSubmit }) => {
 
           <Select
             className="col-span-2"
+            name="tipoCategoria"
             value={tipoCategoria}
             onChange={(e) => setTipoCategoria(e.target.value)}
           >
@@ -123,7 +130,8 @@ const ModalOrdenes = ({ isOpen, onClose, onSubmit }) => {
           </Select>
 
           <Input
-            className="col-span-2"
+            className="col-span-2 pl-4"
+            name="precio"
             type="text"
             placeholder="Precio"
             value={precio}
@@ -131,7 +139,8 @@ const ModalOrdenes = ({ isOpen, onClose, onSubmit }) => {
           />
 
           <Input
-            className="col-span-2"
+            className="col-span-2 pl-4"
+            name="duracion"
             type="text"
             placeholder="Duracion"
             value={duracion}
@@ -140,6 +149,7 @@ const ModalOrdenes = ({ isOpen, onClose, onSubmit }) => {
 
           <Select
             className="col-span-4"
+            name="nombreVeterinario"
             value={nombreVeterinario}
             onChange={(e) => setNombreVeterinario(e.target.value)}
           >
@@ -151,7 +161,8 @@ const ModalOrdenes = ({ isOpen, onClose, onSubmit }) => {
           </Select>
 
           <Input
-            className="col-span-2"
+            className="col-span-2 pl-4"
+            name="dniVeterinario"
             type="text"
             placeholder="dni del veterinario"
             value={dniVeterinario}
@@ -159,14 +170,16 @@ const ModalOrdenes = ({ isOpen, onClose, onSubmit }) => {
           />
 
           <Input
-            className="col-span-2"
+            className="col-span-2 pl-4"
+            name="rolVeterinario"
             type="text"
             placeholder="rol del veterinario"
             value={rolveterinario}
             onChange={(e) => setRolVeterinario(e.target.value)}
           />
           <Input
-            className="col-span-4"
+            className="col-span-4 pl-4"
+            name="rolVeterinario"
             type="date"
             placeholder="rol del veterinario"
             value={rolveterinario}
@@ -181,4 +194,4 @@ const ModalOrdenes = ({ isOpen, onClose, onSubmit }) => {
   );
 };
 
-export default ModalOrdenes;
+export default ModalAgregarOrden;

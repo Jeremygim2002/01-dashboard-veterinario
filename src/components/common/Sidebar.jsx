@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
 import {
   BarChart2,
@@ -12,6 +12,7 @@ import {
 // eslint-disable-next-line no-unused-vars
 import { AnimatePresence, motion } from "framer-motion";
 import useRutasActivas from "../../hooks/useRutasActivas";
+import useSidebarResponsivo from "../../hooks/useSidebarResponsivo";  
 
 const SIDEBAR_ITEMS = [
   { name: "Analisis", icon: BarChart2, href: "/" },
@@ -20,21 +21,16 @@ const SIDEBAR_ITEMS = [
   { name: "Personal", icon: BriefcaseBusiness, href: "/personal" },
   { name: "Ordenes", icon: SquareChartGantt, href: "/ordenes" },
   { name: "Calendario", icon: CalendarPlus, href: "/calendario" },
+
 ];
 
 const Sidebar = () => {
-  const [sidebarAbierto, setSidebarAbierto] = useState(
-    window.innerWidth >= 768
-  );
+  const [sidebarAbierto, setSidebarAbierto] = useSidebarResponsivo();
   const esRutaActiva = useRutasActivas();
 
-  useEffect(() => {
-    const handleResize = () => {
-      setSidebarAbierto(window.innerWidth >= 768);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const toggleSidebar = () => {
+    setSidebarAbierto(!sidebarAbierto);
+  };
 
   return (
     <motion.div
@@ -48,7 +44,7 @@ const Sidebar = () => {
           aria-label="Alternar menú lateral"
           whileHover={{ scale: 1.2, rotate: 15 }}
           whileTap={{ scale: 0.8 }}
-          onClick={() => setSidebarAbierto(!sidebarAbierto)}
+          onClick={toggleSidebar}
           className="p-2 rounded-full hover:bg-sidebar-hover transition-colors max-w-fit"
         >
           <motion.div
@@ -80,7 +76,7 @@ const Sidebar = () => {
                   <AnimatePresence>
                     {sidebarAbierto && (
                       <motion.span
-                        className="ml-4 whitespace-nowrap text-texto"
+                        className="ml-4 whitespace-nowrap text-texto font-titulo"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 20 }}

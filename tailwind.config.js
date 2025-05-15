@@ -45,8 +45,9 @@ export default {
 
       },
       fontFamily: {
-        titulo: ['Poppins', 'sans-serif'],        // fuente personalizada para títulos
-        cuerpo: ['Poppins', 'sans-serif'],        // fuente para cuerpo de texto
+        titulo: ['"Rubik Dirt"', 'sans-serif'],
+        tituloSecundario: ['Montserrat', 'sans-serif'],
+        cuerpo: ['Quicksand', 'sans-serif'],
       },
     },
   },

@@ -10,16 +10,17 @@ const ModalGeneral = ({ isOpen, onClose, title, children }) => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -100, opacity: 0 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="fixed top-0 left-0 w-full z-50 flex justify-center"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-30"
         >
           <div className="mt-10 bg-superficie opacity-100 text-white border border-gray-700 shadow-xl rounded-xl p-6 w-full max-w-xl relative">
             <button
               onClick={onClose}
-              className="absolute top-2 right-2 text-gray-400 hover:text-red-400"
+              aria-label="Cerrar modal"
+              className="text-2xl font-bold absolute top-4 right-4 text-gray-400 hover:text-red-400"
             >
               ✕
             </button>
-            <h2 className="text-lg font-semibold mb-4">{title}</h2>
+            <h2 className="text-lg font-semibold mb-8 font-tituloSecundario">{title}</h2>
             {children}
           </div>
         </motion.div>

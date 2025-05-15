@@ -1,9 +1,6 @@
-import React from 'react'
-// eslint-disable-next-line no-unused-vars
-import { motion } from "framer-motion";
 import Header from "../components/common/Header";
 import StatCardsGroup from "../components/common/StatCardsGroup";
-import TablaOrdenes from "../components/ordenes/TablaOrdenes";
+import TablaOrden from "../components/ordenes/TablaOrden";
 
 function PaginaOrdenes() {
   return (
@@ -11,7 +8,7 @@ function PaginaOrdenes() {
       <Header title="Ordenes" />
       <main className="max-w-7xl mx-auto py-6 px-4 lg:px-8">
       <StatCardsGroup />
-      <TablaOrdenes/>
+      <TablaOrden/>
         {/* Graficos*/}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* <CuadroVentasGenerales />

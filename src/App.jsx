@@ -1,31 +1,22 @@
-import { Route, Routes } from "react-router-dom";
-
+import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "./components/common/Sidebar";
 
-import PaginaAnalisis from "./pages/PaginaAnalisis";
-import PaginaServicios from "./pages/PaginaServicios";
-import PaginaOrdenes from "./pages/PaginaOrdenes";
-import PaginaPersonal from "./pages/PaginaPersonal";
-import PaginaUsuarios from "./pages/PaginaUsuarios";
+function App() {
+  const location = useLocation();
+  const esLogin = location.pathname === "/Login";
 
-
-function App() { 
   return (
     <div className="flex h-screen bg-slate-900 text-slate-100 overflow-hidden">
-    <div className="fixed inset-0 z-0">
-      <div className="absolute inset-0 bg-fondo bg-opacity-70" /> 
-      <div className="absolute inset-0 backdrop-blur-sm" /> 
-    </div>
-      {/* Termina Fondo */}
- 
-			<Sidebar />
-        <Routes>
-          <Route path="/" element={<PaginaAnalisis />} />
-          <Route path="/Servicios" element={<PaginaServicios />} />
-          <Route path="/Ordenes" element={<PaginaOrdenes/>} />
-          <Route path="/Personal" element={<PaginaPersonal />} />
-          <Route path="/Usuarios" element={<PaginaUsuarios />} />
-        </Routes>
+      {!esLogin && (
+        <div className="fixed inset-0 z-0">
+          <div className="absolute inset-0 bg-fondo bg-opacity-70" />
+          <div className="absolute inset-0 backdrop-blur-sm" />
+        </div>
+      )}
+
+      {!esLogin && <Sidebar />}
+
+      <Outlet />
     </div>
   );
 }

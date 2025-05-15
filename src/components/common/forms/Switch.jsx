@@ -13,7 +13,7 @@ const Switch = ({ estado, setEstado }) => (
           }`}
         />
       </button>
-      <span className="text-sm text-gray-400">
+      <span className="text-sm text-texto-secundario w-16 text-left font-cuerpo">
         {estado ? "Activo" : "Inactivo"}
       </span>
     </div>

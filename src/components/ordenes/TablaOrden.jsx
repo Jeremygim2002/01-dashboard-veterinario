@@ -3,13 +3,14 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import FiltroTabla from "../common/TablaFiltros";
 import { useTablaDatos } from "../../hooks/useTablaDatos";
-import ModalOrdenes from "./ModalOrdenes";
+import ModalAgregarOrden from "./ModalAgregarOrden";
 import TablaBase from "../common/TablaBase";
+import ModalVerOrden from "./ModalVerOrden";
 
 // Datos de ejemplo
 const DATA_ORDENES = [
   {
-    id_orden: 1,
+    id: 1,
     servicio: "baño",
     dueno: "Carlos Pérez",
     nombre_mascota: "lana",
@@ -18,7 +19,7 @@ const DATA_ORDENES = [
     estado: true, // Activo
   },
   {
-    id_orden: 2,
+    id: 2,
     servicio: "baño",
     dueno: "Carlos Pérez",
     nombre_mascota: "lana",
@@ -27,7 +28,7 @@ const DATA_ORDENES = [
     estado: true, // Activo
   },
   {
-    id_orden: 3,
+    id: 3,
     servicio: "baño",
     dueno: "Carlos Pérez",
     nombre_mascota: "lana",
@@ -36,7 +37,7 @@ const DATA_ORDENES = [
     estado: true, // Activo
   },
   {
-    id_orden: 4,
+    id: 4,
     servicio: "baño",
     dueno: "Carlos Pérez",
     nombre_mascota: "lana",
@@ -45,7 +46,7 @@ const DATA_ORDENES = [
     estado: true, // Activo
   },
   {
-    id_orden: 5,
+    id: 5,
     servicio: "baño",
     dueno: "Carlos Pérez",
     nombre_mascota: "lana",
@@ -55,8 +56,10 @@ const DATA_ORDENES = [
   },
 ];
 
-const TablaOrdenes = () => {
+const TablaOrden = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalVerOpen, setModalVerOpen] = useState(false);
+  const [ordenSeleccionado, setOrdenSeleccionado] = useState(null);
 
   const handleAgregar = (nuevoPersonal) => {
     // Aquí actualizas tu estado o envías a la base de datos
@@ -70,9 +73,9 @@ const TablaOrdenes = () => {
     datosFiltrados: ordenFiltrado,
   } = useTablaDatos(DATA_ORDENES, ["dueno", "servicio"]);
 
-  const handleSeleccionarOrden = (orden) => {
-    console.log("Producto seleccionado:", orden);
-    // Aquí podrías abrir un modal, añadirlo a un carrito, etc.
+  const handleVerOrden = (orden) => {
+    setOrdenSeleccionado(orden);
+    setModalVerOpen(true);
   };
 
   return (
@@ -110,7 +113,7 @@ const TablaOrdenes = () => {
         botonTexto="Crear Orden"
         onClickBoton={() => setModalOpen(true)}
       />
-      <ModalOrdenes
+      <ModalAgregarOrden
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
         onSubmit={handleAgregar}
@@ -118,7 +121,7 @@ const TablaOrdenes = () => {
 
       <TablaBase
         columnas={[
-          { id: "id_orden", label: "ID" },
+          { id: "id", label: "ID" },
           { id: "servicio", label: "Servicio" },
           { id: "dueno", label: "Dueño" },
           { id: "nombre_mascota", label: "Nombre mascota" },
@@ -126,13 +129,19 @@ const TablaOrdenes = () => {
           { id: "fecha", label: "fecha" },
         ]}
         datos={ordenFiltrado}
-        onVer={handleSeleccionarOrden}
+        onVer={handleVerOrden}
         onEditar={(p) => console.log("Editar", p)}
         onEliminar={(id) => console.log("Eliminar ID:", id)}
         onToggleEstado={toggleEstado}
+      />
+
+      <ModalVerOrden
+        isOpen={modalVerOpen}
+        onClose={() => setModalVerOpen(false)}
+        orden={ordenSeleccionado}
       />
     </motion.div>
   );
 };
 
-export default TablaOrdenes;
+export default TablaOrden;
