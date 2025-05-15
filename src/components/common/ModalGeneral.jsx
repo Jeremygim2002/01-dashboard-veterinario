@@ -12,7 +12,7 @@ const ModalGeneral = ({ isOpen, onClose, title, children }) => {
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-30"
         >
-          <div className="mt-10 bg-superficie opacity-100 text-white border border-gray-700 shadow-xl rounded-xl p-6 w-full max-w-xl relative">
+          <div className="mt-10 bg-superficie opacity-100 text-white border border-superficie-borde shadow-xl rounded-xl p-6 w-full max-w-xl relative">
             <button
               onClick={onClose}
               aria-label="Cerrar modal"

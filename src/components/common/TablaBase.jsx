@@ -26,7 +26,7 @@ const TablaBase = ({
             {columnas.map((col) => (
               <th
                 key={col.id}
-                className="px-6 py-3 text-left text-xs font-bold font-cuerpo text-texto-secundario uppercase tracking-wider"
+                className="px-6 py-3 text-left text-xs font-bold font-cuerpo text-texto-secundario uppercase tracking-wider "
               >
                 {col.label}
               </th>
@@ -50,6 +50,7 @@ const TablaBase = ({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
+               className="hover:bg-superficie-hover transition-colors duration-200"
             >
               {/* Botón Ver */}
               <td className="px-6 py-4 whitespace-nowrap text-sm text-texto-secundario font-medium">

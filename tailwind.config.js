@@ -22,6 +22,7 @@ export default {
         //  Superficie (Divs dentro del fondo)
         superficie: "#1E293B",               // Fondo de divs 
         "superficie-borde": "#334155",       // Bordes de los divs/tablas
+        "superficie-hover": "#334155",       // Hover de los divs/tablas
 
         //  Botones
         "boton-primario": "#0EA5E9",          // Botón principal (acciones generales)
@@ -29,8 +30,9 @@ export default {
 
         //  Inputs y select 
         input: "#374151",               // Fondo del input 
-        "input-borde": "#4B5563",       // Borde del input 
-        "input-foco": "#64748B",        // Hover/foco del input 
+        "input-borde": "#4B5563",       // Borde del input
+        "input-foco": "#64748B",        // Hover/foco del input
+        "input-hover": "#4B5563",
 
         //  Modales y paneles
         modal: "#212936",                     // Color igual al de los paneles 
