@@ -13,15 +13,15 @@ import {
 import Title from "../common/Titulo"
 
 const stackedData = [
-  { semana: "Semana 1", organico: 1200, pagado: 800, redes: 600 },
-  { semana: "Semana 2", organico: 1400, pagado: 1000, redes: 700 },
-  { semana: "Semana 3", organico: 1600, pagado: 1100, redes: 900 },
-  { semana: "Semana 4", organico: 1500, pagado: 1200, redes: 1100 },
-  { semana: "Semana 5", organico: 1700, pagado: 1300, redes: 1000 },
-  { semana: "Semana 6", organico: 1800, pagado: 1400, redes: 1200 },
+  { semana: "Enero", baño: 1200, corte: 800, vacuna1: 600 },
+  { semana: "Febrero", baño: 1400, corte: 1000, vacuna1: 700 },
+  { semana: "Marzo", baño: 1600, corte: 1100, vacuna1: 900 },
+  { semana: "Abril", baño: 1500, corte: 1200, vacuna1: 1100 },
+  { semana: "Mayo", baño: 1700, corte: 1300, vacuna1: 1000 },
+  { semana: "Junio", baño: 1800, corte: 1400, vacuna1: 1200 },
 ];
 
-const GraficoAreas = () => {
+const GraficoOrdenes = () => {
   return (
     <motion.div
       className="bg-slate-800 p-6 md:p-8 rounded-2xl shadow-xl border border-slate-700 transition-all duration-500"
@@ -29,7 +29,7 @@ const GraficoAreas = () => {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
     >
-      <Title className="text-center tracking-wide mb-4" text="CANALES POR SEMANA" />
+      <Title className="text-center tracking-wide mb-4" text="ORDENES POR MES" />
       <div className="w-full h-[360px]">
         <ResponsiveContainer>
           <AreaChart data={stackedData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
@@ -60,9 +60,9 @@ const GraficoAreas = () => {
               labelStyle={{ color: "#E2E8F0", fontWeight: "600" }}
             />
             <Legend wrapperStyle={{ color: "#E2E8F0" }} />
-            <Area type="monotone" dataKey="organico" stackId="1" stroke="#0EA5E9" fill="url(#colorOrganico)" />
-            <Area type="monotone" dataKey="pagado" stackId="1" stroke="#F43F5E" fill="url(#colorPagado)" />
-            <Area type="monotone" dataKey="redes" stackId="1" stroke="#8B5CF6" fill="url(#colorRedes)" />
+            <Area type="monotone" dataKey="baño" stackId="1" stroke="#0EA5E9" fill="url(#colorOrganico)" />
+            <Area type="monotone" dataKey="corte" stackId="1" stroke="#F43F5E" fill="url(#colorPagado)" />
+            <Area type="monotone" dataKey="vacuna1" stackId="1" stroke="#8B5CF6" fill="url(#colorRedes)" />
           </AreaChart>
         </ResponsiveContainer>
       </div>
@@ -70,4 +70,4 @@ const GraficoAreas = () => {
   );
 };
 
-export default GraficoAreas;
+export default GraficoOrdenes;

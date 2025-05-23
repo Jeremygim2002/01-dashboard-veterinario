@@ -12,24 +12,24 @@ import {
 import Title from "../common/Titulo"
 
 const data = [
-  { canal: "Búsqueda Orgánica", valor: 4200 },
-  { canal: "Publicidad Pagada", valor: 3000 },
-  { canal: "Acceso Directo", valor: 2500 },
-  { canal: "Redes Sociales", valor: 2000 },
-  { canal: "Referencias", valor: 1500 },
-  { canal: "Email Marketing", valor: 1200 },
+  { canal: "Medicina interna", valor: 4200 },
+  { canal: "Cirugía veterinaria", valor: 3000 },
+  { canal: "Dermatología veterinaria", valor: 2500 },
+  { canal: "Oftalmología veterinaria", valor: 2000 },
+  { canal: "Cardiología veterinaria", valor: 1500 },
+  { canal: "Odontología veterinaria", valor: 1200 },
 ];
 
 const COLORS = [
-  "#14B8A6",  // Verde azulado tecnológico
-  "#6366F1",  // Azul-violeta fuerte
-  "#9333EA",  // Púrpura elegante
-  "#D946EF",  // Magenta futurista
-  "#FACC15",  // Amarillo brillante de alto contraste
-  "#EF4444",  // Rojo potente y dinámico
+  "#14B8A6",  
+  "#6366F1",  
+  "#9333EA",  
+  "#D946EF",  
+  "#FACC15",  
+  "#EF4444",  
 ];
 
-const GraficoBarrasLimpio = () => {
+const GraficoPersonal = () => {
   return (
     <motion.div
       className="bg-slate-800 p-6 md:p-8 rounded-2xl shadow-xl border border-slate-700 transition-all duration-500"
@@ -37,7 +37,7 @@ const GraficoBarrasLimpio = () => {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
     >
-      <Title className="text-center tracking-wide mb-4" text="CANALES DE ATENCIÓN" />
+      <Title className="text-center tracking-wide mb-4" text="PERSONAL DISPONIBLE POR ESPECIALIDAD" />
       <div className="w-full h-[360px]">
         <ResponsiveContainer>
           <BarChart
@@ -80,4 +80,4 @@ const GraficoBarrasLimpio = () => {
   );
 };
 
-export default GraficoBarrasLimpio;
+export default GraficoPersonal;

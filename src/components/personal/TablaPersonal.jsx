@@ -15,7 +15,7 @@ const DATA_PERSONAL = [
     correo: "carlos.perez@example.com",
     telefono: "123456789",
     dni: "12345678",
-    rol: "Veterinario",
+    especialidad: "medico general",
     estado: false,
   },
   {
@@ -24,7 +24,7 @@ const DATA_PERSONAL = [
     correo: "ana.gomez@example.com",
     telefono: "987654321",
     dni: "12345678",
-    rol: "Recepcionista",
+    especialidad: "medico general",
     estado: true,
   },
   {
@@ -33,7 +33,7 @@ const DATA_PERSONAL = [
     correo: "luis.fernandez@example.com",
     telefono: "456789123",
     dni: "12345678",
-    rol: "Administrador",
+    especialidad: "medico general",
     estado: false,
   },
   {
@@ -42,7 +42,7 @@ const DATA_PERSONAL = [
     correo: "sofia.ramirez@example.com",
     telefono: "456789123",
     dni: "12345678",
-    rol: "Asistente Veterinario",
+    especialidad: "medico general",
     estado: true,
   },
   {
@@ -51,7 +51,7 @@ const DATA_PERSONAL = [
     correo: "miguel.torres@example.com",
     telefono: "456789123",
     dni: "12345678",
-    rol: "Especialista en Peluquería",
+    especialidad: "medico general",
     estado: true,
   },
 ];
@@ -126,7 +126,7 @@ const TablaPersonal = () => {
           { id: "correo", label: "Correo" },
           { id: "telefono", label: "Teléfono" },
           { id: "dni", label: "DNI" },
-          { id: "rol", label: "Rol" },
+          { id: "especialidad", label: "Especialidad" },
         ]}
         datos={personalFiltrado}
         onVer={handleVerPersonal}

@@ -1,26 +1,32 @@
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
 import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
+  PieChart,
+  Pie,
+  Cell,
   Tooltip,
   Legend,
   ResponsiveContainer,
 } from "recharts";
-// eslint-disable-next-line no-unused-vars
-import { motion } from "framer-motion";
 import Title from "../common/Titulo"
 
-const userRetentionData = [
-  { name: "Semana 1", retention: 100 },
-  { name: "Semana 2", retention: 78 },
-  { name: "Semana 3", retention: 64 },
-  { name: "Semana 4", retention: 53 },
-  { name: "Semana 5", retention: 45 },
-  { name: "Semana 6", retention: 43 },
-  { name: "Semana 7", retention: 46 },
-  { name: "Semana 8", retention: 51 },
+const channelData = [
+  { name: "Consulta general y preventiva", value: 4200 },
+  { name: "Vacunación y desparasitación", value: 3000 },
+  { name: "Peluquería y estética", value: 2500 },
+  { name: "Fisioterapia y rehabilitación", value: 2000 },
+  { name: "Cirugías generales y especializadas", value: 1500 },
+  { name: "Hospitalización y cuidados intensivos", value: 1200 },
+];
+
+const COLORS = [
+  "#2563EB", 
+  "#3B82F6",  
+  "#60A5FA",  
+  "#818CF8",  
+  "#A78BFA",  
+  "#C084FC",  
+  "#E879F9",  
 ];
 
 const GraficoServicios = () => {
@@ -29,54 +35,61 @@ const GraficoServicios = () => {
       className="bg-slate-800 p-6 md:p-8 rounded-2xl shadow-xl border border-slate-700 transition-all duration-500"
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
+      transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
     >
-      <Title className="text-center tracking-wide mb-4" text="RETENCIÓN DE PERSONAL"/>
-      <div className="w-full h-[300px] sm:h-[350px] md:h-[400px]">
+      <Title className="text-center tracking-wide mb-4" text="SERVICIOS DISPONIBLES POR TIPO" />
+      <div className="w-full h-[320px] sm:h-[360px] md:h-[400px]">
         <ResponsiveContainer>
-          <LineChart data={userRetentionData}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#475569" />
-            <XAxis dataKey="name" stroke="#CBD5E1" tick={{ fill: "#CBD5E1" }} />
-            <YAxis
-              stroke="#CBD5E1"
-              tick={{ fill: "#CBD5E1" }}
-              domain={[0, 100]}
-            />
+          <PieChart>
+            <Pie
+              data={channelData}
+              cx="45%"
+              cy="50%"
+              innerRadius={60}
+              outerRadius={100}
+              paddingAngle={3}
+              dataKey="value"
+              labelLine={false}
+              label={({ name, percent }) => (
+                <text
+                  style={{
+                    fill: "#CBD5E1",
+                    fontSize: "0.75rem",
+                    fontWeight: 500,
+                  }}
+                >
+                  {`${name}: ${(percent * 100).toFixed(1)}%`}
+                </text>
+              )}
+            >
+              {channelData.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Pie>
             <Tooltip
               contentStyle={{
-                backgroundColor: "#1E293B",
-                border: "1px solid #334155",
-                borderRadius: "10px",
+                backgroundColor: "#1e293b",
+                borderColor: "#475569",
+                borderRadius: "0.5rem",
               }}
-              itemStyle={{ color: "#22D3EE", fontWeight: 600 }}
-              labelStyle={{ color: "#E2E8F0", fontWeight: 500 }}
+              itemStyle={{ color: "#F8FAFC", fontWeight: "bold" }}
+              labelStyle={{ color: "#E2E8F0" }}
             />
             <Legend
-              verticalAlign="top"
-              height={40}
+              layout="vertical"
+              verticalAlign="middle"
+              align="right"
               iconType="circle"
-              wrapperStyle={{ color: "#E2E8F0" }}
-            />
-            <Line
-              type="monotone"
-              dataKey="retention"
-              stroke="#22D3EE"
-              strokeWidth={3}
-              dot={{
-                r: 5,
-                fill: "#22D3EE",
-                stroke: "#0F172A",
-                strokeWidth: 2,
+              wrapperStyle={{
+                color: "#E2E8F0",
+                fontSize: "0.875rem",
+                fontWeight: 500,
               }}
-              activeDot={{
-                r: 8,
-                fill: "#22D3EE",
-                stroke: "#FACC15",
-                strokeWidth: 3,
-              }}
-              animationDuration={800}
             />
-          </LineChart>
+          </PieChart>
         </ResponsiveContainer>
       </div>
     </motion.div>
